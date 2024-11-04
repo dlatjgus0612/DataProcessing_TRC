@@ -1,4 +1,4 @@
-name,age,weight,job
-John,25,75.3,student
-Peter,30,64.5,연구원
-pi,40,3.141592653,교수
+name age weight job
+John 25 75.30 student
+Peter 30 64.50 연구원
+pi 40 3.14 교수

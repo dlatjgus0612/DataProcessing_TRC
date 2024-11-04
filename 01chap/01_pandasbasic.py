@@ -29,7 +29,13 @@ def write_pandas():
     ])
     
     df = pd.DataFrame.from_dict(friend_ordered_dict)
-    df.to_csv("data/save1.csv", encoding="utf-8", index=False, header=True)
+    df.to_csv("data/save1.csv", 
+              encoding="utf-8", 
+              sep=' ',
+              na_rep='NaN',
+              float_format='%.2f', # 2 decimal places
+              index=False, 
+              header=True)
     # 인코딩을 UTF-8로 변경하고 index (0,1,2) 제거 
 
 # 메인 실행
