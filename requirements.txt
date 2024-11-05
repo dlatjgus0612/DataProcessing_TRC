@@ -26,4 +26,4 @@ PyMesh==1.0.2
 jupyter==1.1.1
 seawater==3.3.5
 GSW==3.6.19
-basemap-data-hires @ file:///home/conda/feedstock_root/build_artifacts/basemap-split_1680540426258/work/packages/basemap_data_hires
+
