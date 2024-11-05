@@ -10,17 +10,11 @@ for Marine-Meteorological-WindEnergy
 
 ## Getting Started
 
-    conda create -n <environment_name> python=3.10
-    conda activate <environment_name>
-    conda install -c anaconda pip
-    conda config --set pip_interop_enabled true
-    
-    # to deactivate
-    conda deactivate
+    bash setup.sh
 
 (추가예정) 
 
-    pip install -r requirements.txt
+    안되는 라이브러리 있으면 그때 그때 추가로 깔아주세용 (최대한 수정 예정)
 
 
 ## Links
