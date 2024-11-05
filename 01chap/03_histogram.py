@@ -59,6 +59,6 @@ def mathwithhist():
     plt.show()
 
 
-# histogram()
-# histogram2()
+histogram()
+histogram2()
 mathwithhist()
