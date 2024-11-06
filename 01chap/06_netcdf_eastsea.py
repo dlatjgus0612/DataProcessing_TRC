@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 
 # Set absolute path
-work_path = '/mnt/c/Users/MML/sh/DataProcessing_TRC/'
+work_path = '/Users/imseohyeon/Documents/TRC/DataProcessing_TRC/'
 input_file = 'data/KHOA_SCU_L4_Z004_Y01_U2023_EastSea.nc'
 
 
