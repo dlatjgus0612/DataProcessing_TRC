@@ -32,3 +32,4 @@ click==8.1.7
 pyparsing==3.2.0
 tk==8.6.13
 pyqt==5.15.10
+shapely==2.0.5
