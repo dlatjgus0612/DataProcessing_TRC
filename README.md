@@ -30,8 +30,20 @@ for Marine-Meteorological-WindEnergy
 	 ┃ ┣ 12_ulsan_windrose.py
 	 ┃ ┣ 12_windrose.py
 	 ┃ ┣ 13_buoydata_plot.py
-	 ┃ ┗ 13_buoydata_plottest.py
+	 ┃ ┣ 13_buoydata_plottest.py
+	 ┃ ┣ 14_wave_monthly.py
+	 ┃ ┣ 14_wave_monthly2.py
+	 ┃ ┣ 14_wave_yearly_seasonal.py
+	 ┃ ┗ 15_sun_monthly.py
 	 ┣ 03chap
+	 ┃ ┣ 01_cartesian_polar_plot.py
+	 ┃ ┣ 02_cartesian_polar_exam.py
+	 ┃ ┣ 03_polygon_test.py
+	 ┃ ┣ 04_contour.py
+	 ┃ ┣ 05_basemap_start.py
+	 ┃ ┣ 05_basemap_start_cartopy.py
+	 ┃ ┣ 06_basemap_ocean_obs.py
+	 ┃ ┗ fonttest.py
 	 ┣ 04chap
 	 ┣ data
 	 ┃ ┣ CTD_station_P1_NLEG01-1_-_Nansen_Legacy_Cruise_-_2021_Joint_Cruise_2-1.nc
@@ -54,9 +66,10 @@ for Marine-Meteorological-WindEnergy
 
 (추가예정) 
 
-> 안되는 라이브러리 있으면 그때 그때 추가로 깔아주세용 (최대한 수정 예정)
+> 안되는 라이브러리 있으면 그때 그때 추가로 깔아주세용 (최대한 requirments에 업데이트 예정)
 
 
 ## Links
 - python을 이용한 해양. 기상. 풍력 자료처리 by 유학렬, 한진현, 김동환 (0.72)
+- 개인 [NOTION](https://imsh.notion.site/1-python-750753d5ce7246d38846fb27a4e99829?pvs=4) (필요시 공유 드림니다 : 유료가 아니라 다 못엶)
 
