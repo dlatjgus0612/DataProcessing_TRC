@@ -35,12 +35,21 @@ for file_path, marker, size, label in zip(file_paths, markers, sizes, labels):
     x, y = map(df['long'].values, df['lat'].values)
     map.plot(x, y, marker, markersize = size, label = label)
 
-# set legend
-ax = plt.gca()                                   # get current axes
-handles, labels = ax.get_legend_handles_labels() # get added plot's handle(선,점..항목들), label(text)
-# set legend location lat33, lon130.8
-legend = plt.legend([handles[0], handles[4], handles[5]],           # recommend write on txt
-                    [handles[0], handles[4], handles[5]],
-                    loc='upper left', bbox_to_anchor=(0.8, 0.2))    # plot coordinate +0.8, +0.2
-plt.gca().add_artist(legend)                     # legend add to axes
+# set legend (book version)
+# ax = plt.gca()                                   # get current axes
+# handles, labels = ax.get_legend_handles_labels() # get added plot's handle(선,점..항목들), label(text)
+# # set legend location lat33, lon130.8
+# legend = plt.legend([handles[0], handles[4], handles[5]],           # recommend write on txt
+#                     [handles[0], handles[4], handles[5]],
+#                     loc='upper left', bbox_to_anchor=(0.8, 0.2))    # plot coordinate +0.8, +0.2
+# plt.gca().add_artist(legend)                     # legend add to axes
+
+# set legend (modified)
+handles, labels = plt.gca().get_legend_handles_labels() # get added plot's handle(선,점..항목들), label(text)
+s_handles = [handles[0], handles[4], handles[5]]
+s_labels = [labels[0], labels[4], labels[5]]
+plt.legend(s_handles, s_labels, loc='upper left', bbox_to_anchor=(0.8, 0.2))    # plot coordinate +0.8, +0.2  
+
 plt.show()
+# png = 'data/06_basemap_ocean_obs.png'
+# plt.savefig(png, format='png')
