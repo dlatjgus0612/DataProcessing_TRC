@@ -81,7 +81,8 @@ class HFMapProcessor:
 
     def makeBasemap(self):
         plt.figure(figsize=(12, 10))
-        m = Basemap(projection= 'merc', lat_0= 36.00, lon_0=128, resolution='h',
+        m = Basemap(projection= 'merc', 
+                    lat_0= 36.00, lon_0=128, resolution='h',
                     llcrnrlon=124, urcrnrlon=131.5, llcrnrlat=33, urcrnrlat=39.1)
         
         m.drawcoastlines()
@@ -93,10 +94,15 @@ class HFMapProcessor:
         return m
 
     def get_file(self, grid_path, sta_path):
+        """
+        :param grid_path: Path to grid CSV
+        :param sta_path: Path to station CSV
+        """
+        # Read Grid Data
         df1 = pd.read_csv(grid_path, sep = ',', names= ['long', 'lat'],
                           encoding = 'euc-kr', dtype={'long' : 'float', 'lat' : 'float'})
         lon1, lat1 = self.m(df1['long'].values, df1['lat'].values)
-
+        # Read Station Data
         df2 = pd.read_csv(sta_path, sep = ',', names= ['long', 'lat', 'ID'],
                           encoding = 'euc-kr', skiprows=1, dtype={'long' : 'float', 'lat' : 'float'})
         lon2, lat2 = self.m(df2['long'].values, df2['lat'].values)
@@ -107,10 +113,15 @@ class HFMapProcessor:
     def process(self):  
         print(f"Second Processing files in: {self.grid_path}, {self.sta_path}")
         m = self.makeBasemap()
-        lon1, lat1, lon2, lat2 = self.get_file(grid_path, sta_path)
+        self.m = m                                  # Store Basemap obj for Coordinate Transform
+        lon1, lat1, lon2, lat2 = self.get_file(self.grid_path, self.sta_path)
+        self.lon1, self.lat1, self.lat2, self.lon2= lon1, lat1, lat2, lon2 
+
+        # Plot 
         print("Plot of Observation Area")
         self.m.plot(self.lon1, self.lat1, 'g.', markersize= 1, label = 'Observation Area')
         self.m.plot(self.lon2, self.lat2, 'ro', markersize=2, label = 'HF Station')
+
         plt.legend()
         plt.show()
         print("Grid data mapping with HF Observation processing complete.")
