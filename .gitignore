@@ -161,5 +161,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-data/icec.day.mean.nc
-data/sst.day.mean.nc
+# Ignore all .nc files inside the data/ directory
+data/*.nc
+
