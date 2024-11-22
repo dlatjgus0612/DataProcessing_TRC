@@ -163,4 +163,5 @@ cython_debug/
 
 # Ignore all .nc files inside the data/ directory
 data/*.nc
+data/*grib2
 
