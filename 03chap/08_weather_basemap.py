@@ -2,18 +2,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 from matplotlib import cm
-
 import pygrib
 import cartopy
 import cartopy.crs as ccrs
+from scipy.ndimage import gaussian_filter
+# import matplotlib
+# matplotlib.use('Agg')
 
-# Process and visualize the GRIB data
+
+# File path
+file = "data/gdas1.fnl0p25.2024082100.f09.grib2"
+
 try:
-    grbs = pygrib.open(downloaded_file)
+    # Open the GRIB file
+    grbs = pygrib.open(file)
     
     # Select the "Pressure reduced to MSL" data
     grb = grbs.select(name='Pressure reduced to MSL')[0]
-    data = grb.values / 100  # Convert to Pa to hPa
+    data = grb.values / 100  # Convert Pa to hPa
     lats, lons = grb.latlons()  # Get latitudes and longitudes
 
     # Apply Gaussian filter to smooth data
@@ -49,7 +55,8 @@ try:
     plt.text(4500000, 4200000, 'L', fontsize=30, color='r', rotation=10)
     plt.text(2800000, 5550000, 'L', fontsize=30, color='r', rotation=-20)
 
-    plt.show()
+    #plt.show()
+    plt.savefig("data/08result.png")
 
 except Exception as e:
     print(f"Error during visualization: {e}")
