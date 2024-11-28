@@ -11,7 +11,7 @@ from scipy.ndimage import gaussian_filter
 
 
 # File path
-file = "data/gdas1.fnl0p25.2023072406.f00.grib2"
+file = "data/grib/gdas1.fnl0p25.2023072406.f00.grib2"
 
 try:
     # Open the GRIB file
