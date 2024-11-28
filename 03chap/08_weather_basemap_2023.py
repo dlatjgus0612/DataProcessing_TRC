@@ -11,7 +11,7 @@ from scipy.ndimage import gaussian_filter
 
 
 # File path
-file = "data/gdas1.fnl0p25.2024082100.f09.grib2"
+file = "data/gdas1.fnl0p25.2023072406.f00.grib2"
 
 try:
     # Open the GRIB file
@@ -44,7 +44,7 @@ try:
     cs = map.contour(x, y, data, levels=np.arange(940, 1040, 2), colors='b', linewidths=0.7)
     plt.clabel(cs, inline=True, fontsize=8, fmt='%1.0f')
 
-    plt.title('Synop Chart 2024-08-21 09:00:00 \n Projection : Lambert Conformal Conic')
+    plt.title('Synop Chart 2023-07-24 06:00:00 \n Projection : Lambert Conformal Conic')
     
     # Add text annotations
     plt.text(2200000, 400000, "TY2305 DOKSURI \n 930hPa 17.6N 124.6E \n MOV: NW 9KT \n MAX: 97KT", color='red', fontsize=15)
@@ -55,8 +55,8 @@ try:
     plt.text(4500000, 4200000, 'L', fontsize=30, color='r', rotation=10)
     plt.text(2800000, 5550000, 'L', fontsize=30, color='r', rotation=-20)
 
-    #plt.show()
-    plt.savefig("data/08result.png")
+    plt.show()
+    #plt.savefig("data/08result.png")
 
 except Exception as e:
     print(f"Error during visualization: {e}")
