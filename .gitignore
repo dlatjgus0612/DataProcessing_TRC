@@ -164,4 +164,6 @@ cython_debug/
 # Ignore all .nc files inside the data/ directory
 data/grib
 
-
+# Ignore over the 500mb data
+data/자연과학용수심_통합본.txt
+data/khoa_standard_depth.csv
