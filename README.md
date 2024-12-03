@@ -1,10 +1,11 @@
 
+
 # DataProcessing_TRC
 for Marine-Meteorological-WindEnergy
 
 ## File Structure
 
-    file structureDataProcessing_TRC  
+    file structureDataProcessing_TRC
 	 ┣ 01chap
 	 ┃ ┣ 01_pandasbasic.py
 	 ┃ ┣ 02_numpy_matplotlib.py
@@ -42,17 +43,43 @@ for Marine-Meteorological-WindEnergy
 	 ┃ ┣ 04_contour.py
 	 ┃ ┣ 05_basemap_start.py
 	 ┃ ┣ 05_basemap_start_cartopy.py
+	 ┃ ┣ 06_basemap_hfradar.py
+	 ┃ ┣ 06_basemap_hfradar_all.py
+	 ┃ ┣ 06_basemap_hfradar_allclass.py
+	 ┃ ┣ 06_basemap_hfradar_class.py
 	 ┃ ┣ 06_basemap_ocean_obs.py
-	 ┃ ┗ fonttest.py
-	 ┣ 04chap
+	 ┃ ┣ 07_basemap_polygon.py
+	 ┃ ┣ 08_plot_slp_wind_class.py
+	 ┃ ┣ 08_plot_slp_windvector.py
+	 ┃ ┣ 08_plot_sst_basemap.py
+	 ┃ ┣ 08_weather_basemap_2023.py
+	 ┃ ┣ 09_KHOA_depth_base.py
+	 ┃ ┣ 09_KHOA_depth_con.py
+	 ┃ ┣ 10_basemap_landshape.py
+	 ┃ ┣ 11_sand_polygon_base.py
+	 ┃ ┣ 12_windvector_quiver.py
+	 ┃ ┣ analysis_grib.py
+	 ┃ ┣ analysis_pygrib.ipynb
+	 ┃ ┣ analysis_pygrib.py
+	 ┃ ┣ analysis_pygrib_colab.ipynb
+	 ┃ ┣ fonttest.py
+	 ┃ ┗ lookup_ncfile.py
+	 ┣ 03chap_2
+	 ┃ ┣ 01_pygmttest.py
+	 ┃ ┣ 02_trackline.py
+	 ┃ ┣ 03_etopo.py
+	 ┃ ┣ 03_etopo_kr.py
+	 ┃ ┣ 04_khoa_depth.py
+	 ┃ ┣ 05_study_KOON.py
+	 ┃ ┗ 05_study_pohang.py
 	 ┣ data
-	 ┃ ┣ CTD_station_P1_NLEG01-1_-_Nansen_Legacy_Cruise_-_2021_Joint_Cruise_2-1.nc
-	 ┃ ┣ KHOA_SCU_L4_Z004_Y01_U2023_EastSea.nc
-	 ┃ ┗ ...
+	 ┃ ┗ related datasets…
 	 ┣ README.md
 	 ┣ gitsetting.sh
 	 ┣ requirements.txt
-	 ┗ setup.sh
+	 ┣ setup.sh
+	 ┗ tmux_checkgpu.py
+
 
 ## Usage
 ((used models or tools))
@@ -72,4 +99,5 @@ for Marine-Meteorological-WindEnergy
 ## Links
 - python을 이용한 해양. 기상. 풍력 자료처리 by 유학렬, 한진현, 김동환 (0.72)
 - 개인 [NOTION](https://imsh.notion.site/1-python-750753d5ce7246d38846fb27a4e99829?pvs=4) (필요시 공유 드림니다 : 유료가 아니라 다 못엶)
+- 개인 [TISTORY](https://imsh0206.tistory.com/category/Data%20Engineering%20%EC%9E%AC%EB%B0%8C%EB%94%B0/Ocean%20Meteorological%20Data) (이해하기 쉽게 더 풀어쓰려고 노력중)
 
