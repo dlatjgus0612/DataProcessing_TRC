@@ -1,10 +1,6 @@
 import pygmt
 import os
 
-import pandas as pd
-import pygmt
-import os
-
 # set Path 
 work_path = "/home/ish/DataProcessing_TRC/data/"
 out_file = os.path.join(work_path, "contour_pygmt1.pdf")
