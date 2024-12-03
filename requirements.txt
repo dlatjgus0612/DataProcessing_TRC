@@ -33,3 +33,5 @@ pyparsing==3.2.0
 tk==8.6.13
 pyqt==5.15.10
 shapely==2.0.5
+plotly==5.24.1
+folium==0.18.0
