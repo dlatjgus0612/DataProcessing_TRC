@@ -1,7 +1,7 @@
 """
-KHOA Depth Contour Map Generator
+KHOA All data with Observatory Location
 
-This script generates a contour map of the Korean territory using depth data from KHOA.
+This script generates a map with observatory locations from KHOA tide, ocean current, and KMA buoy stations.
 It utilizes PyGMT for map creation and visualization.
 
 Usage:
@@ -10,70 +10,52 @@ Usage:
 Dependencies:
     - pygmt
     - pandas
-    - numpy
     - os
 """
 
+import pandas as pd
 import pygmt
 import os
-import pandas as pd
-import numpy as np
 
-class MAINNAME:
+def load_data(file_path):
+    return pd.read_csv(file_path, sep=',', names=['sta', 'long', 'lat'], encoding="euc-kr", 
+                       skiprows=1, dtype={'long': 'float', 'lat': 'float'})
 
-    def __init__(self, work_path, data_filename, output_filename):
-        """
-        Initialize the KHOADepthMapper.
-        """
-        self.work_path = work_path
-        self.data_file = os.path.join(work_path, data_filename)
-        self.out_file = os.path.join(work_path, output_filename)
-        self.region = [123, 133, 31, 39]  # basic Korean region
-        self.data_np = self._load_data()
+def plot_stations(fig, df, style, color, label):
+    fig.plot(x=df['long'].values, y=df['lat'].values, style=style, fill=color, pen="black", label=label)
 
-    def _load_data(self):
-        data_df = pd.read_csv(self.data_file, sep=r'\s+',
-                              names=['lat', 'lon', 'depth'],
-                              encoding='euc-kr', skiprows=1,
-                              dtype={'lat': 'float32', 'lon': 'float32', 'depth': 'float32'})
-        return data_df.to_numpy()
+# 설정
+work_path = "/home/ish/DataProcessing_TRC/data/"
+region = [128.79, 131.5, 35.10, 36.60]
+out_file = os.path.join(work_path, "study_map_pohang.pdf")
 
-    def set_grid(self):
-        """
-        Set up the grid for the contour map.
-        """
-        grid = pygmt.xyz2grd(x=self.data_np[:, 1], y=self.data_np[:, 0], z=self.data_np[:, 2],  #x 경도, y 위도, z 깊이
-                             region=self.region, spacing=0.01)
-        pygmt.makecpt(cmap='geo', series=[0, 2500, 50], continuous=True)
-        pygmt.config(FONT_TITLE="13p,Helvetica")
-        return grid
+# 데이터 로드
+data_files = {
+    'tide': "khoa_tide_pos_2024.csv",
+    'current': "khoa_transect_pos_2024.csv",
+    'buoy': "kma_buoy_pos_2024.csv"
+}
+data = {key: load_data(os.path.join(work_path, file)) for key, file in data_files.items()}
 
-    def create_map(self, grid):
-        """
-        Create and save the contour map.
-        """
-        fig = pygmt.Figure()
-        fig.grdimage(grid=grid, projection='M10c', region=self.region,
-                     frame=["WSne+t...MAINTITLENAME"])
-        fig.grdcontour(grid=grid, annotation="20+gwhite+f8p",
-                       levels=np.concatenate([np.arange(-10, 2800, 100)]),
-                       pen="a0.15p")
-        fig.coast(shorelines="1/0.5p,black", land="oldlace", region=self.region)
-        fig.basemap(map_scale='g130.40/34.7+c33+w100k', frame=True)
-        fig.colorbar(frame=["a2000f500", "x+l...COLORBARNAME", "y+lm"])
-        fig.savefig(self.out_file)
-        fig.show()
+# 지도 생성
+fig = pygmt.Figure()
+fig.coast(region=region, projection="M12c", water="white", land="oldlace", shorelines="1/0.25p", frame=["af"])
+fig.basemap(map_scale="g131/35.52+w50k+f+l", region=region)
 
-def main():
-    """Main function to run the ....."""
-    
-    work_path = "/home/ish/DataProcessing_TRC/data/"
-    data_filename = '....csv'
-    output_filename = "....pdf"
+# 관측소 플로팅
+plot_stations(fig, data['tide'], "s0.3c", "red@30", "Tidal Station (KHOA)")
+plot_stations(fig, data['current'], "c0.2c", "blue@40", "Ocean current Obs. (KHOA)")
+plot_stations(fig, data['buoy'], "a0.3c", "blue", "Ocean Buoy (KMA)")
 
-    mapper = MAINNAME(work_path, data_filename, output_filename)
-    grid = mapper.set_grid()
-    mapper.create_map(grid)
+# 도시 이름 표시
+cities = [("Pohang", 129.36, 36.00), ("Ulsan", 129.31, 35.56)]
+for city, x, y in cities:
+    fig.text(x=x, y=y, text=city, font="10p,Helvetica-Bold,black", justify="CM")
 
-if __name__ == "__main__":
-    main()
+# 범례 추가
+with pygmt.config(FONT_ANNOT_PRIMARY="8p"):
+    fig.legend(box="+gwhite+pblack", position="JBR+jBR+o0.2c")
+
+# 저장 및 표시
+fig.savefig(out_file)
+fig.show()
